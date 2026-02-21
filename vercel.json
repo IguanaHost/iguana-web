@@ -2,8 +2,33 @@
   "name": "iguana-web",
   "version": 2,
   "builds": [{ "src": "**/*", "use": "@vercel/static" }],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "(?!PE|CO|MX|AR|CL|EC|BO|PY|UY).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        }
+      ],
+      "destination": "/en",
+      "permanent": false
+    }
+  ],
   "routes": [
-    { "src": "/(.*)", "headers": { "Cache-Control": "public, max-age=0, s-maxage=0, must-revalidate" } }
+    {
+      "src": "/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=0, s-maxage=0, must-revalidate"
+      }
+    }
   ],
   "alias": ["web.iguana.lat"]
 }
