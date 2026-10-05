@@ -1,3 +1,6 @@
+/* Secciones ocultas sin borrarlas: el atributo hidden manda sobre cualquier display. */
+[hidden] { display: none !important; }
+
 /* ========================================
    IguanaHost — Landing Page Styles
    ======================================== */
